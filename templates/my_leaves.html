@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Leave Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+        .container {
+            width: 90%;
+            margin: 50px auto;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #343a40;
+            color: white;
+        }
+        .Pending {
+            color: orange;
+            font-weight: bold;
+        }
+        .Approved {
+            color: green;
+            font-weight: bold;
+        }
+        .Rejected {
+            color: red;
+            font-weight: bold;
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>My Leave Applications</h2>
+
+    <table>
+        <tr>
+            <th>Leave Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+        </tr>
+
+        {% for leave in leaves %}
+        <tr>
+            <td>{{ leave.leave_type }}</td>
+            <td>{{ leave.start_date }}</td>
+            <td>{{ leave.end_date }}</td>
+            <td>{{ leave.reason }}</td>
+            <td class="{{ leave.status }}">{{ leave.status }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No leave applications found</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/staff-dashboard/">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>

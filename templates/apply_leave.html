@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply Leave</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+        .box {
+            width: 400px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        textarea {
+            resize: none;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Apply Leave</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Leave Type</label>
+        <select name="leave_type" required>
+            <option value="">Select</option>
+            <option>Casual Leave</option>
+            <option>Sick Leave</option>
+            <option>Emergency Leave</option>
+        </select>
+
+        <label>Start Date</label>
+        <input type="date" name="start" required>
+
+        <label>End Date</label>
+        <input type="date" name="end" required>
+
+        <label>Reason</label>
+        <textarea name="reason" rows="3" required></textarea>
+
+        <button type="submit">Submit Leave</butto
